@@ -1,0 +1,15 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: test
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=${DB}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_SYNC=${DB_SYNC}
+      - POSTGRES_AUTO=${DB_AUTO}
+    volumes:
+       - ./new-postgres-data:/var/lib/postgresql/new-data
