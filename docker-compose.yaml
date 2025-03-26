@@ -2,7 +2,7 @@ version: '3'
 services:
   postgres:
     image: postgres:latest
-    container_name: test
+    container_name: test-postgres
     ports:
       - 5432:5432
     environment:
@@ -12,4 +12,14 @@ services:
       - POSTGRES_SYNC=${DB_SYNC}
       - POSTGRES_AUTO=${DB_AUTO}
     volumes:
-       - ./new-postgres-data:/var/lib/postgresql/new-data
+      - ./new-postgres-data:/var/lib/postgresql/new-data
+
+  mongo:
+    image: mongo:latest
+    container_name: test-mongo
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_URI=${MONGODB_URI}
+    volumes:
+      - ./mongo-data:/data/db
