@@ -20,6 +20,7 @@ services:
     ports:
       - 27017:27017
     environment:
-      - MONGO_INITDB_ROOT_URI=${MONGODB_URI}
+      - MONGO_INITDB_ROOT_USERNAME=elusiuve
+      - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
       - ./mongo-data:/data/db

@@ -10,11 +10,11 @@ import { MongooseModule } from '@nestjs/mongoose';
       isGlobal: true,
       validationSchema: configValidationSchema,
     }),
-
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         uri: configService.get<string>('MONGODB_URI'),
+        authSource: 'admin',
       }),
       inject: [ConfigService],
     }),
